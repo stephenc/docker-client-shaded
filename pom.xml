@@ -1,0 +1,143 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.sonatype.oss</groupId>
+    <artifactId>oss-parent</artifactId>
+    <version>9</version>
+  </parent>
+
+  <groupId>io.github.stephenc.docker</groupId>
+  <artifactId>docker-client-nodeps</artifactId>
+  <version>5.0.2.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>docker-client nodeps</name>
+  <description>A docker client with all third-party dependencies shaded</description>
+
+  <scm>
+    <connection>scm:git:git@git.cloudbees.com:stephenc/docker-client-nodeps.git</connection>
+    <developerConnection>scm:git:git@git.cloudbees.com:stephenc/docker-client-nodeps.git</developerConnection>
+  </scm>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.spotify</groupId>
+      <artifactId>docker-client</artifactId>
+      <version>5.0.2</version>
+    </dependency>
+  </dependencies>
+
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.5.1</version>
+        <configuration>
+          <skip>true</skip>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>2.6</version>
+        <configuration>
+          <skip>true</skip>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.10.4</version>
+        <configuration>
+          <includeDependencySources>true</includeDependencySources>
+          <dependencySourceIncludes>
+            <dependencySourceInclude>com.spotify:docker-client</dependencySourceInclude>
+          </dependencySourceIncludes>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>2.4.3</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <artifactSet>
+                <excludes>
+                  <exclude>org.bouncycastle:*</exclude>
+                  <exclude>org.slf4j:*</exclude>
+                  <exclude>commons-logging:*</exclude>
+                  <exclude>commons-codec:*</exclude>
+                  <exclude>commons-lang:*</exclude>
+                  <exclude>org.apache.commons:commons-compress</exclude>
+                  <exclude>com.github.jnr:*</exclude>
+                  <exclude>org.ow2.asm:*</exclude>
+                </excludes>
+              </artifactSet>
+              <createSourcesJar>true</createSourcesJar>
+              <relocations>
+                <relocation>
+                  <pattern>javax.annotation</pattern>
+                  <shadedPattern>com.spotify.docker.client.shaded.javax.annotation</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>javax.inject</pattern>
+                  <shadedPattern>com.spotify.docker.client.shaded.javax.inject</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>javax.ws.rs</pattern>
+                  <shadedPattern>com.spotify.docker.client.shaded.javax.ws.rs</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>com.fasterxml.jackson</pattern>
+                  <shadedPattern>com.spotify.docker.client.shaded.com.fasterxml.jackson</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>org.glassfish</pattern>
+                  <shadedPattern>com.spotify.docker.client.shaded.org.glassfish</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>org.apache</pattern>
+                  <shadedPattern>com.spotify.docker.client.shaded.org.apache</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>org.aopalliance</pattern>
+                  <shadedPattern>com.spotify.docker.client.shaded.org.aopalliance</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>org.jvnet</pattern>
+                  <shadedPattern>com.spotify.docker.client.shaded.org.jvnet</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>jersey.repackaged</pattern>
+                  <shadedPattern>com.spotify.docker.client.shaded.jersey.repackaged</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>com.google</pattern>
+                  <shadedPattern>com.spotify.docker.client.shaded.com.google</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>javassist</pattern>
+                  <shadedPattern>com.spotify.docker.client.shaded.javassist</shadedPattern>
+                </relocation>
+              </relocations>
+              <promoteTransitiveDependencies>true</promoteTransitiveDependencies>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
