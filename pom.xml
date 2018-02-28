@@ -17,8 +17,8 @@
   <description>A docker client with most third-party dependencies shaded</description>
 
   <scm>
-    <connection>scm:git:git@git.cloudbees.com:stephenc/docker-client-shaded.git</connection>
-    <developerConnection>scm:git:git@git.cloudbees.com:stephenc/docker-client-shaded.git</developerConnection>
+    <connection>scm:git:git@github.com:stephenc/docker-client-shaded.git</connection>
+    <developerConnection>scm:git:git@github.com:stephenc/docker-client-shaded.git</developerConnection>
   </scm>
 
   <dependencies>
