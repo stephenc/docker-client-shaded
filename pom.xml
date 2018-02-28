@@ -10,7 +10,7 @@
 
   <groupId>io.github.stephenc.docker</groupId>
   <artifactId>docker-client-nodeps</artifactId>
-  <version>7.0.2.0-SNAPSHOT</version>
+  <version>8.11.1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>docker-client nodeps</name>
@@ -25,7 +25,7 @@
     <dependency>
       <groupId>com.spotify</groupId>
       <artifactId>docker-client</artifactId>
-      <version>7.0.2</version>
+      <version>8.11.1</version>
     </dependency>
   </dependencies>
 
