@@ -9,16 +9,16 @@
   </parent>
 
   <groupId>io.github.stephenc.docker</groupId>
-  <artifactId>docker-client-nodeps</artifactId>
+  <artifactId>docker-client-shaded</artifactId>
   <version>8.11.1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>docker-client nodeps</name>
-  <description>A docker client with all third-party dependencies shaded</description>
+  <name>docker-client shaded</name>
+  <description>A docker client with most third-party dependencies shaded</description>
 
   <scm>
-    <connection>scm:git:git@git.cloudbees.com:stephenc/docker-client-nodeps.git</connection>
-    <developerConnection>scm:git:git@git.cloudbees.com:stephenc/docker-client-nodeps.git</developerConnection>
+    <connection>scm:git:git@git.cloudbees.com:stephenc/docker-client-shaded.git</connection>
+    <developerConnection>scm:git:git@git.cloudbees.com:stephenc/docker-client-shaded.git</developerConnection>
   </scm>
 
   <dependencies>
